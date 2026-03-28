@@ -89,7 +89,7 @@ unsafe_allow_html=True
 st.markdown(
 """
 <div class="subtitle">
-AI-powered tool that helps you estimate your hair-loss stage using images
+This AI tool analyzes your image to estimate your hair-loss stage and related factors such as hair density, graft requirements, and potential treatment cost.
 </p></p>
 </div>
 """,
@@ -161,15 +161,16 @@ st.markdown(
 ">
 
 <p style="margin-top:0;">
-<b>This tool does not only estimate your hair-loss stage. It uses your image to estimate the following:</b>
+<b>The also tool uses your image to estimate the following:</b>
 </p>
 
 <h4 style="color:#9fffe0;margin-top:18px;">Hair Density</h4>
 
 <p>
-Hair density is the number of hair follicles in a specific area of the scalp, 
-usually measured in grafts per square centimeter. Higher density means better coverage, 
-while lower density may indicate thinning or advanced hair loss.
+Hair density shows how much hair covers your scalp, measured in grafts per cm².
+<a href="https://en.wikipedia.org/wiki/Hair_loss" target="_blank" style="color:#9fffe0; text-decoration:underline;">
+Learn more
+</a>
 </p>
 
 <h4 style="color:#9fffe0;margin-top:18px;">Estimated Grafts</h4>
