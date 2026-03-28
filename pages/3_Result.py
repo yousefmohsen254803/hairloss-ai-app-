@@ -6,33 +6,33 @@ import io
 st.set_page_config(page_title="Result", layout="centered")
 
 st.markdown(
-    """
+    f"""
     <style>
-    .main .block-container {
+    .main .block-container {{
         max-width: 950px;
         padding-top: 2rem;
-    }
+    }}
 
-    .title {
+    .title {{
         text-align: center;
         font-size: 56px;
-        color: var(--text-color);
+        color: inherit;
         font-weight: 900;
         margin-bottom: 6px;
-    }
+    }}
 
-    .subtitle {
+    .subtitle {{
         text-align: center;
         font-size: 20px;
-        color: var(--text-color);
+        color: inherit;
         opacity: 0.92;
         margin-top: 0px;
         margin-bottom: 18px;
-    }
+    }}
 
-    .result-card {
-        background: var(--secondary-background-color);
-        border: 2px solid rgba(128,128,128,0.18);
+    .result-card {{
+        background: rgba(0, 0, 0, 0.65);
+        border: 2px solid rgba(255,255,255,0.16);
         border-radius: 14px;
         padding: 16px 12px;
         text-align: center;
@@ -40,35 +40,39 @@ st.markdown(
         display: flex;
         flex-direction: column;
         justify-content: center;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
         margin-bottom: 12px;
-    }
+    }}
 
-    .card-title {
+    .card-title {{
         font-size: 20px;
         font-weight: 800;
-        color: var(--primary-color);
+        color: #9fffe0;
         margin-bottom: 8px;
-    }
+    }}
 
-    .card-value {
+    .card-value {{
         font-size: 20px;
         font-weight: 400;
-        color: var(--text-color);
-    }
+        color: inherit;
+    }}
 
-    .card-value-small {
+    .card-value-small {{
         font-size: 18px;
         font-weight: 400;
-        color: var(--text-color);
-    }
+        color: inherit;
+    }}
 
-    div.stButton > button {
+    div.stButton > button {{
         border-radius: 18px;
         padding: 14px 18px;
         font-weight: 800;
         min-height: 56px;
-    }
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(18, 24, 38, 0.92);
+        color: white;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+    }}
     </style>
     """,
     unsafe_allow_html=True
@@ -83,12 +87,12 @@ if "pred_label" not in st.session_state or "uploaded_image_bytes" not in st.sess
     st.markdown('<div class="title">Result</div>', unsafe_allow_html=True)
 
     st.markdown(
-        "<h3 style='text-align:center; color:var(--text-color); margin-top:40px; margin-bottom:10px;'>No result available yet</h3>",
+        "<h3 style='text-align:center; color:inherit; margin-top:40px; margin-bottom:10px;'>No result available yet</h3>",
         unsafe_allow_html=True
     )
 
     st.markdown(
-        "<p style='text-align:center; color:var(--text-color); opacity:0.88; font-size:18px; line-height:1.6; max-width:720px; margin:0 auto 30px auto;'>Please go to the Diagnose page first and upload or take a photo to get your AI hair analysis.</p>",
+        "<p style='text-align:center; color:inherit; opacity:0.88; font-size:18px; line-height:1.6; max-width:720px; margin:0 auto 30px auto;'>Please go to the Diagnose page first and upload or take a photo to get your AI hair analysis.</p>",
         unsafe_allow_html=True
     )
 
@@ -145,13 +149,6 @@ info = analysis_map.get(
     }
 )
 
-price_map = {
-    "Normal Hair": "No Transplant Needed",
-    "Moderate Loss": "€3,000 - €6,000",
-    "Heavy Loss": "€6,000 - €10,000",
-    "Bald": "€10,000 - €15,000"
-}
-price = price_map.get(pred_label, "Unknown")
 
 # -----------------------------
 # Page UI
@@ -216,30 +213,17 @@ with col4:
         unsafe_allow_html=True
     )
 
-col1, col2, col3 = st.columns([1, 2, 1])
-
-with col2:
-    st.markdown(
-        f"""
-        <div class="result-card">
-            <div class="card-title">Estimated Cost for Hair Transplant</div>
-            <div class="card-value-small">{price}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    ) 
-
 st.markdown(
     """
     <div style="
         max-width:850px;
         margin:20px auto;
         padding:6px 18px;
-        background: color-mix(in srgb, var(--primary-color) 12%, transparent);
-        border-left:6px solid var(--primary-color);
+        background:rgba(255, 210, 80, 0.15);
+        border-left:6px solid #FFD43B;
         border-radius:8px;
         font-size:16px;
-        color:var(--text-color);
+        color:inherit;
         line-height:1.6;
     ">
         <b>Note:</b> This result is an <b>AI-based analysis</b>. It is not medical advice.

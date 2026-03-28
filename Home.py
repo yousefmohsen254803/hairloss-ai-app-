@@ -3,46 +3,46 @@ import streamlit as st
 st.set_page_config(page_title="Hair Loss Analyzer", layout="centered")
 
 st.markdown(
-    """
+    f"""
     <style>
-    .main .block-container {
+    .main .block-container {{
         max-width: 900px;
         padding-top: 2rem;
-    }
+    }}
 
-    .title {
+    .title {{
         text-align:center;
         font-size:52px;
-        color: var(--text-color);
+        color:inherit;
         font-weight:700;
-    }
+    }}
 
-    .subtitle {
+    .subtitle {{
         text-align:center;
         font-size:18px;
-        color: var(--text-color);
-        opacity: 0.85;
+        color:inherit;
+        opacity:0.85;
         margin-top:5px;
-    }
+    }}
 
-    .subtitle2 {
+    .subtitle2 {{
         text-align:center;
         font-size:18px;
-        color: var(--text-color);
-        opacity: 0.85;
+        color:inherit;
+        opacity:0.85;
         margin-top:-10px;
-    }
+    }}
 
-    div.stButton > button {
+    div.stButton > button {{
         border-radius:14px;
         padding:12px 16px;
         font-weight:1200;
-    }
+    }}
 
-    .example-img img {
+    .example-img img {{
         border-radius:16px;
-        box-shadow:0 10px 30px rgba(0,0,0,0.20);
-    }
+        box-shadow:0 10px 30px rgba(0,0,0,0.35);
+    }}
     </style>
     """,
     unsafe_allow_html=True
@@ -68,7 +68,7 @@ unsafe_allow_html=True
 st.markdown(
 """
 <div class="subtitle">
-This AI tool analyzes your image to estimate your hair-loss stage and related factors such as hair density, graft requirements, and potential treatment cost.
+AI-powered tool that helps you estimate your hair-loss stage using images
 </p></p>
 </div>
 """,
@@ -80,14 +80,14 @@ st.markdown(
 <div style="
     max-width:850px;
     margin:10px auto 20px auto;
-    color:var(--text-color);
-    opacity:0.9;
+    color:inherit;
     font-size:17px;
     line-height:1.6;
+    opacity:0.9;
 ">
 
 <p><p><p>
-It predicts your stage using the <b>Norwood scale</b>, ranging from Stage 1 (no hair loss) to Stage 7 (advanced baldness).</p>
+This tool analyzes your image and predicts your stage using the <b>Norwood scale</b>, ranging from Stage 1 (no hair loss) to Stage 7 (advanced baldness).</p>
 
 </div>
 """,
@@ -103,7 +103,7 @@ st.markdown(
 <div style="
     max-width:850px;
     margin:20px auto 8px auto;
-    color:var(--primary-color);
+    color:#9fffe0;
     font-size:18px;
     font-weight:600;
 ">
@@ -135,17 +135,17 @@ st.markdown(
 <div style="
     max-width:850px;
     margin:20px auto;
-    color:var(--text-color);
-    opacity:0.9;
+    color:inherit;
     font-size:17px;
     line-height:1.6;
+    opacity:0.9;
 ">
 
 <p style="margin-top:0;">
-<b>The also tool uses your image to estimate the following:</b>
+<b>This tool does not only estimate your hair-loss stage. It uses your image to estimate the following:</b>
 </p>
 
-<h4 style="color:var(--primary-color);margin-top:18px;">Hair Density</h4>
+<h4 style="color:#9fffe0;margin-top:18px;">Hair Density</h4>
 
 <p>
 Hair density shows how much hair covers your scalp, measured in grafts per cm².
@@ -154,7 +154,7 @@ Learn more
 </a>
 </p>
 
-<h4 style="color:var(--primary-color);margin-top:18px;">Estimated Grafts</h4>
+<h4 style="color:#9fffe0;margin-top:18px;">Estimated Grafts</h4>
 
 <p>
 Estimated grafts indicate how many hair follicles may be needed if a transplant is considered.

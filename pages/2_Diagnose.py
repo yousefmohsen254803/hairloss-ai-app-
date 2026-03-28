@@ -6,89 +6,125 @@ import time
 st.set_page_config(page_title="Diagnose", layout="centered")
 
 st.markdown(
-    """
+    f"""
     <style>
-    .main .block-container {
+    .main .block-container {{
         max-width: 900px;
         padding-top: 2rem;
-    }
+    }}
 
-    .title {
+    .title {{
         text-align: center;
         font-size: 56px;
-        color: var(--text-color);
+        color: inherit;
         font-weight: 900;
         margin-bottom: 20px;
-    }
+    }}
 
-    .subtitle {
+    .subtitle {{
         text-align: center;
         font-size: 16px;
-        color: var(--text-color);
+        color: inherit;
         opacity: 0.92;
         margin-top: 0px;
         margin-bottom: 6px;
         line-height: 1.35;
-    }
+    }}
 
-    .example-space {
+    .example-space {{
         margin-top: 18px;
-    }
+    }}
 
-    .radio-title {
-        color: var(--text-color);
+    .radio-title {{
+        color: inherit;
         font-size: 18px;
         font-weight: 800;
         margin-bottom: -20px;
         text-align: left;
-    }
+    }}
 
     div[role="radiogroup"] label,
-    div[role="radiogroup"] label * {
-        color: var(--text-color) !important;
+    div[role="radiogroup"] label * {{
+        color: inherit !important;
         opacity: 1 !important;
-    }
+    }}
 
-    div[role="radiogroup"] label {
-        color: var(--text-color) !important;
+    div[role="radiogroup"] label {{
+        color: inherit !important;
         font-weight: 700 !important;
-    }
+    }}
 
-    div[data-testid="stFileUploader"] {
+    div[data-testid="stFileUploader"] {{
+        background: rgba(255,255,255,0.96) !important;
         padding: 18px !important;
         border-radius: 16px !important;
+        border: 2px solid rgba(255,255,255,0.96) !important;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
         max-width: 760px;
         margin-left: auto;
         margin-right: auto;
-    }
+    }}
 
-    div[data-testid="stFileUploader"] button {
+    div[data-testid="stFileUploader"] section {{
+        background: #dcdcdc !important;
+        border: 2px dashed #cccccc !important;
+    }}
+
+    div[data-testid="stFileUploader"] section * {{
+        color: #111 !important;
+        opacity: 1 !important;
+    }}
+
+    div[data-testid="stFileUploader"] button {{
+        background: #111 !important;
+        color: #ffffff !important;
         border-radius: 12px !important;
-    }
+    }}
 
-    div[data-testid="stCameraInput"] {
+    div[data-testid="stFileUploader"] section:hover {{
+        background: #f5f5f5 !important;
+    }}
+
+    div[data-testid="stFileUploader"] label {{
+        color: #111 !important;
+        font-weight: 800 !important;
+    }}
+
+    div[data-testid="stFileUploader"] span {{
+        color: #333 !important;
+    }}
+
+    div[data-testid="stCameraInput"] {{
+        background: rgba(255,255,255,0.96) !important;
         padding: 18px !important;
         border-radius: 16px !important;
+        border: 2px solid rgba(255,255,255,0.96) !important;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
         max-width: 760px;
         margin-left: auto;
         margin-right: auto;
-    }
+    }}
 
-    div.stButton > button {
+    div[data-testid="stCameraInput"] label {{
+        color: #111 !important;
+        font-weight: 800 !important;
+    }}
+
+    div.stButton > button {{
         border-radius: 14px;
         padding: 12px 14px;
         font-weight: 1200;
-    }
+    }}
 
-    .predictwrap {
+    .predictwrap {{
         max-width: 760px;
         margin-left: auto;
         margin-right: auto;
-    }
+    }}
 
-    .backwrap {
+    .backwrap {{
         max-width: 260px;
-    }
+    }}
     </style>
     """,
     unsafe_allow_html=True
@@ -122,10 +158,10 @@ st.markdown(
     max-width:850px;
     margin:10px auto 20px auto;
     padding:6px 16px;
-    background: color-mix(in srgb, var(--primary-color) 12%, transparent);
-    border-left:5px solid var(--primary-color);
+    background:rgba(255, 221, 87, 0.15);
+    border-left:5px solid #FFD43B;
     border-radius:6px;
-    color:var(--text-color);
+    color:inherit;
     font-size:16px;
 ">
 
