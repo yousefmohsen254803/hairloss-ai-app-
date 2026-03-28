@@ -107,7 +107,7 @@ st.markdown(
 ">
 
 <p><p><p>
-This tool analyzes your image and predicts your stage using the <b>Norwood scale</b>, ranging from Stage 1 (no hair loss) to Stage 7 (advanced baldness).</p>
+It predicts your stage using the <b>Norwood scale</b>, ranging from Stage 1 (no hair loss) to Stage 7 (advanced baldness).</p>
 
 </div>
 """,
@@ -168,7 +168,7 @@ st.markdown(
 
 <p>
 Hair density shows how much hair covers your scalp, measured in grafts per cm².
-<a href="https://en.wikipedia.org/wiki/Hair_loss" target="_blank" style="color:#9fffe0; text-decoration:underline;">
+<a href="https://www.livingproof.com/blogs/hair-101/hair-density?srsltid=AfmBOoocBQ62rYxYNHldK9cz65LUF6uBrcgu7Zy29Kol2Gktl-iRaJe4" target="_blank" style="color:#9fffe0; text-decoration:underline;">
 Learn more
 </a>
 </p>
