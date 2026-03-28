@@ -5,92 +5,98 @@ import time
 
 st.set_page_config(page_title="Diagnose", layout="centered")
 
-# -----------------------------
-# Clean UI
-# -----------------------------
-st.markdown(
-    """
-    <style>
-    .title {
-        text-align: center;
-        font-size: 48px;
-        font-weight: 800;
-        margin-bottom: 10px;
-    }
+st.markdown("""
+<style>
+.title {
+    text-align: center;
+    font-size: 56px;
+    color:#111;
+    font-weight: 900;
+}
 
-    .subtitle {
-        text-align: center;
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 20px;
-    }
+.subtitle {
+    text-align: center;
+    font-size: 16px;
+    color:#333;
+}
 
-    div.stButton > button {
-        border-radius: 12px;
-        padding: 10px;
-        font-weight: 700;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+.radio-title {
+    color:#111;
+    font-size: 18px;
+    font-weight: 800;
+}
 
-# -----------------------------
-# Title
-# -----------------------------
+div.stButton > button {
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-weight: 1200;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.markdown('<div class="title">Diagnose</div>', unsafe_allow_html=True)
 
 st.markdown(
-    '<div class="subtitle">Upload or take a photo to analyze your hair-loss stage</div>',
-    unsafe_allow_html=True
+'<div class="subtitle">Take or upload a photo to estimate your hair-loss stage</div>',
+unsafe_allow_html=True
 )
 
-st.info("Make sure the photo is clear and shows the top of your head.")
+st.warning("Make sure the photo is clear and shows the top of your head.")
 
-# -----------------------------
-# Image Example
-# -----------------------------
-st.image("assets/hero.jpg", width=400)
+st.image("assets/hero.jpg", width=450)
 
-# -----------------------------
-# Upload
-# -----------------------------
-mode = st.radio("", ["📷 Take a photo", "🖼️ Upload"], horizontal=True)
+st.markdown('<div class="radio-title">Choose how to add a photo:</div>', unsafe_allow_html=True)
+
+mode = st.radio("", ["📷 Take a photo", "🖼️ Choose from device"], horizontal=True)
 
 uploaded_file = None
 
 if mode == "📷 Take a photo":
     uploaded_file = st.camera_input("Take a photo")
 else:
-    uploaded_file = st.file_uploader("Upload image", type=["jpg", "png", "jpeg"])
+    uploaded_file = st.file_uploader("Upload your photo", type=["jpg", "jpeg", "png"])
 
 API_URL = "https://hairloss-ai-app.onrender.com/predict"
 
-# -----------------------------
-# Prediction
-# -----------------------------
-if uploaded_file:
-    image = Image.open(uploaded_file)
-    st.image(image, width=300)
+def wait_for_api(api_url, max_wait=60):
+    health_url = api_url.replace("/predict", "/health")
+    start = time.time()
 
-    if st.button("Analyse Photo"):
-        with st.spinner("Analysing..."):
+    while time.time() - start < max_wait:
+        try:
+            response = requests.get(health_url, timeout=5)
+            if response.status_code == 200:
+                return True
+        except:
+            pass
+        time.sleep(2)
+
+    return False
+
+if uploaded_file is not None:
+    image = Image.open(uploaded_file).convert("RGB")
+    st.image(image, width=320)
+
+    if st.button("Analyse Photo", use_container_width=True):
+        with st.spinner("Analysing your photo..."):
             try:
                 uploaded_file.seek(0)
-                files = {"file": uploaded_file.read()}
-                response = requests.post(API_URL, files=files)
+                file_bytes = uploaded_file.read()
+
+                if not wait_for_api(API_URL):
+                    st.error("API is waking up, try again.")
+                    st.stop()
+
+                response = requests.post(API_URL, files={"file": file_bytes})
 
                 data = response.json()
-                st.session_state["pred_label"] = data["prediction"]
-                st.session_state["uploaded_image_bytes"] = uploaded_file.getvalue()
+                st.session_state["pred_label"] = data.get("prediction", "Unknown")
+                st.session_state["uploaded_image_bytes"] = file_bytes
 
                 st.switch_page("pages/3_Result.py")
 
-            except:
-                st.error("Error connecting to API")
+            except Exception as e:
+                st.error(f"Error: {e}")
 
-# -----------------------------
-# Back button
-# -----------------------------
 if st.button("🏠 Home"):
     st.switch_page("Home.py")
