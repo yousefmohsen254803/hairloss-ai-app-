@@ -149,6 +149,18 @@ info = analysis_map.get(
     }
 )
 
+# -----------------------------
+# Transplant cost mapping
+# -----------------------------
+cost_map = {
+    "Normal Hair": "No transplant needed",
+    "Moderate Loss": "€2,500 - €4,500",
+    "Heavy Loss": "€4,500 - €7,500",
+    "Bald": "€7,500 - €12,000"
+}
+
+estimated_cost = cost_map.get(pred_label, "Unknown")
+
 
 # -----------------------------
 # Page UI
@@ -213,6 +225,19 @@ with col4:
         unsafe_allow_html=True
     )
 
+col5, col6, col7 = st.columns([1, 2, 1])
+
+with col6:
+    st.markdown(
+        f"""
+        <div class="result-card">
+            <div class="card-title">Estimated Transplant Cost</div>
+            <div class="card-value-small">{estimated_cost}</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 st.markdown(
     """
     <div style="
@@ -243,6 +268,7 @@ with st.container():
     with col2:
         if st.button("🏠 Home", use_container_width=True):
             st.switch_page("Home.py")
+
 st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1, 2, 1])

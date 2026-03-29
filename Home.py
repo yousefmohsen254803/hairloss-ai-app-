@@ -68,31 +68,14 @@ unsafe_allow_html=True
 st.markdown(
 """
 <div class="subtitle">
-AI-powered tool that helps you estimate your hair-loss stage using images
+This AI tool analyzes your image to estimate your hair-loss stage using the <b>Norwood scale</b>, and related factors such as hair density, graft requirements, and potential treatment cost.
 </p></p>
 </div>
 """,
 unsafe_allow_html=True
 )
 
-st.markdown(
-"""
-<div style="
-    max-width:850px;
-    margin:10px auto 20px auto;
-    color:inherit;
-    font-size:17px;
-    line-height:1.6;
-    opacity:0.9;
-">
 
-<p><p><p>
-This tool analyzes your image and predicts your stage using the <b>Norwood scale</b>, ranging from Stage 1 (no hair loss) to Stage 7 (advanced baldness).</p>
-
-</div>
-""",
-unsafe_allow_html=True
-)
 
 # ----------------------------
 # Norwood Example Image
@@ -140,10 +123,6 @@ st.markdown(
     line-height:1.6;
     opacity:0.9;
 ">
-
-<p style="margin-top:0;">
-<b>This tool does not only estimate your hair-loss stage. It uses your image to estimate the following:</b>
-</p>
 
 <h4 style="color:#9fffe0;margin-top:18px;">Hair Density</h4>
 
